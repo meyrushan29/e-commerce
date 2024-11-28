@@ -1,11 +1,12 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import ProtectedRoute from './context/ProtectedRoute'; 
 import Register from './pages/Register';
 import Login from './pages/Login';
-import Dashboard from './pages/Dashboard'
-import './index.css';
+import Home from './pages/Home';
 
+import './index.css';
 
 const App = () => {
   return (
@@ -15,13 +16,14 @@ const App = () => {
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route 
-            path="/dashboard" 
+            path="/dashboard"
             element={
               <ProtectedRoute>
-                <Dashboard />
+                <Home />
               </ProtectedRoute>
-            } 
+            }
           />
+          <Route path="/" element={<Navigate to="/login" />} />
         </Routes>
       </Router>
     </AuthProvider>
