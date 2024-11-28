@@ -1,12 +1,31 @@
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { AuthProvider } from './context/AuthContext';
+import ProtectedRoute from './context/ProtectedRoute'; 
+import Register from './pages/Register';
+import Login from './pages/Login';
+import Dashboard from './pages/Dashboard'
+import './index.css';
 
-function App() {
-  
 
+const App = () => {
   return (
-    <>
-      <h1 className="text-red-500">Meyrushan</h1>
-    </>
-  )
-} 
+    <AuthProvider>
+      <Router>
+        <Routes>
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          <Route 
+            path="/dashboard" 
+            element={
+              <ProtectedRoute>
+                <Dashboard />
+              </ProtectedRoute>
+            } 
+          />
+        </Routes>
+      </Router>
+    </AuthProvider>
+  );
+};
 
-export default App
+export default App;
