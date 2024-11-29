@@ -60,7 +60,7 @@ const Register = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-orange-200">
+    <div className="min-h-screen flex items-center justify-center bg-white">
       <motion.div
         className="max-w-md w-full mx-auto p-8 bg-white shadow-lg rounded-xl"
         initial={{ opacity: 0 }}
@@ -87,7 +87,7 @@ const Register = () => {
               }}
               className={`w-full pl-10 pr-4 py-3 border ${
                 formErrors.name ? 'border-red-500' : 'border-gray-300'
-              } rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500`}
+              } rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500`}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.4, delay: 0.4 }}
@@ -107,7 +107,7 @@ const Register = () => {
               }}
               className={`w-full pl-10 pr-4 py-3 border ${
                 formErrors.email ? 'border-red-500' : 'border-gray-300'
-              } rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500`}
+              } rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500`}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.4, delay: 0.5 }}
@@ -127,7 +127,7 @@ const Register = () => {
               }}
               className={`w-full pl-10 pr-10 py-3 border ${
                 formErrors.password ? 'border-red-500' : 'border-gray-300'
-              } rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500`}
+              } rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500`}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.4, delay: 0.6 }}
@@ -144,7 +144,7 @@ const Register = () => {
 
           <motion.button
             type="submit"
-            className="w-full py-3 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-lg hover:from-blue-600 hover:to-blue-700 transition-all duration-300 transform active:scale-95 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+            className="w-full py-3 bg-gradient-to-r from-orange-500 to-orange-600 text-white rounded-lg hover:from-orange-600 hover:to-orange-700 transition-all duration-300 transform active:scale-95 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-opacity-50"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.4, delay: 0.7 }}
@@ -154,14 +154,14 @@ const Register = () => {
 
           {isLoading && (
             <div className="mt-4 flex justify-center items-center">
-              <div className="w-6 h-6 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+              <div className="w-6 h-6 border-4 border-orange-500 border-t-transparent rounded-full animate-spin"></div>
             </div>
           )}
 
           {message && (
             <p
               className={`mt-4 text-center ${
-                message.includes('successful') ? 'text-green-500' : 'text-red-500'
+                message.includes('successful') ? 'text-black' : 'text-red-500'
               }`}
             >
               {message}
@@ -169,7 +169,7 @@ const Register = () => {
           )}
         </motion.form>
         <p className="text-center text-sm text-gray-500 mt-4">
-          Already have an account? <a href="/login" className="text-blue-500 hover:underline">Log in</a>
+          Already have an account? <a href="/login" className="text-black hover:underline">Log in</a>
         </p>
       </motion.div>
     </div>

@@ -19,6 +19,8 @@ const products = [
   { id: 8, name: "Unisex Denim Jacket", price: "Rs.90", category: "Clothing", description: "Stylish and durable denim jacket for all seasons.", image: "https://picsum.photos/id/80/300/300" },
   { id: 9, name: "Fresh Apples (1kg)", price: "Rs.100", category: "Groceries", description: "Crisp and juicy apples, directly sourced from farms.", image: "https://picsum.photos/id/90/300/300" },
   { id: 10, name: "Smart TV (43-inch)", price: "Rs.110", category: "Electronics", description: "Ultra HD Smart TV with vibrant display and built-in streaming apps.", image: "https://picsum.photos/id/100/300/300" },
+  { id: 11, name: "Wireless Earbuds", price: "Rs.120", category: "Electronics", description: "True wireless earbuds with crystal clear sound and long battery life.", image: "https://picsum.photos/id/110/300/300" },
+  { id: 12, name: "Leather Wallet", price: "Rs.130", category: "Accessories", description: "Premium leather wallet with multiple card slots and a sleek design.", image: "https://picsum.photos/id/120/300/300" },
 ];
 
 
@@ -29,6 +31,7 @@ const Home = () => {
   const [categoryFilter, setCategoryFilter] = useState('');
   const [priceFilter, setPriceFilter] = useState('');
   const [showCartModal, setShowCartModal] = useState(false);
+  const [successMessage, setSuccessMessage] = useState('');
 
   // Persist cart to localStorage
   useEffect(() => {
@@ -55,7 +58,13 @@ const Home = () => {
       );
     } else {
       setCart([...cart, { ...product, quantity: 1 }]);
+      
     }
+    setSuccessMessage(`Added ${product.name} to your cart!`);
+    setTimeout(() => {
+      setSuccessMessage(''); // Clear the success message after 3 seconds
+    }, 3000);
+    
   };
 
   const removeFromCart = (id) => {
@@ -82,7 +91,7 @@ const Home = () => {
   return (
     <div className="min-h-screen bg-white pt-28"> {/* Added pt-28 to ensure space for both the navbar and search bar */}
       {/* Navigation Bar */}
-      <nav className="bg-orange-600 p-4 shadow-md flex justify-between items-center flex-wrap fixed top-0 left-0 right-0 z-50">
+      <nav className="bg-orange-600 p-4 shadow-md flex justify-between items-center flex-wrap fixed top-0 left-0 right-0 z-50 ">
         <div className="flex items-center space-x-4">
           <a href="/" className="text-white text-2xl font-semibold">E-Store</a>
         </div>
@@ -94,7 +103,7 @@ const Home = () => {
 
           <button
             onClick={logout}
-            className="flex items-center justify-center bg-black text-white px-4 py-2 rounded-full hover:bg-red-500 transition duration-300 text-sm sm:text-base shadow-lg focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-opacity-50"
+            className="flex items-center justify-center bg-white text-black px-4 py-2 rounded-full hover:bg-orange-500 transition duration-300 text-sm sm:text-base shadow-lg focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-opacity-50"
           >
             <FaSignOutAlt className="mr-2" size={10} /> {/* Smaller Logout Icon */}
             Logout
@@ -121,7 +130,7 @@ const Home = () => {
       </nav>
 
       {/* Fixed Search Bar and Filters */}
-      <div className="bg-orange-300 p-2 sm:p-8 lg:p-8 shadow-md fixed top-14 left-0 right-0 z-40">
+      <div className="bg-orange-300 p-2 sm:p-8 lg:p-8 shadow-md fixed top-14 left-0 right-0 z-40 border-2 border-black">
         <input
           type="text"
           placeholder="Search Products"
@@ -155,13 +164,25 @@ const Home = () => {
                 className="w-full sm:w-1/2 md:w-auto"
                />
             </div>
+            {/* Success Message */}
+            {successMessage && (
+              <motion.div
+                 initial={{ opacity: 0, y: 20 }} // Start offscreen and invisible
+                 animate={{ opacity: 1, y: 0 }}  // Fade in and slide up
+                 exit={{ opacity: 0, y: 20 }}    // Fade out and slide down when removed
+                 transition={{ duration: 0.5 }}   // Animation duration
+                 className=" transform -translate-x-1/2 bg-orange-600 text-white px-6 py-2 rounded-md shadow-lg z-50">
+             {successMessage}
+              </motion.div>
+)}
 
         </div>
+        
       </div>
 
       {/* Main Content */}
       <div className="p-4 sm:p-6 lg:p-8 mt-32"> {/* Added mt-32 to create space for fixed elements */}
-      <div id="products"className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+      <div id="products"className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 xl:grid-cols-6 gap-6">
         {filteredProducts.length === 0 ? (
          <div className="col-span-full text-center text-xl font-semibold text-gray-700">
            No items found.
@@ -198,7 +219,7 @@ const Home = () => {
           {/* Add to Cart Button */}
            <button
             onClick={() => addToCart(product)}
-            className="bg-orange-500 text-white py-2 px-4 rounded-md hover:bg-orange-200 transition duration-300">
+            className="bg-orange-500 text-white py-2 px-4 rounded-md hover:bg-black transition duration-300">
                          Add to Cart
            </button>
           </div>

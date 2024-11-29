@@ -54,7 +54,7 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-orange-200">
+    <div className="min-h-screen flex items-center justify-center bg-white">
       <motion.div
         className="max-w-md w-full mx-auto p-8 bg-white shadow-lg rounded-xl"
         initial={{ opacity: 0, y: 50 }}
@@ -75,7 +75,7 @@ const Login = () => {
               }}
               className={`w-full pl-10 pr-4 py-3 border ${
                 formErrors.email ? 'border-red-500' : 'border-gray-300'
-              } rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500`}
+              } rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500`}
             />
             {formErrors.email && (
               <p className="text-red-500 text-sm mt-1">{formErrors.email}</p>
@@ -94,7 +94,7 @@ const Login = () => {
               }}
               className={`w-full pl-10 pr-10 py-3 border ${
                 formErrors.password ? 'border-red-500' : 'border-gray-300'
-              } rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500`}
+              } rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500`}
             />
             <button
               type="button"
@@ -110,7 +110,7 @@ const Login = () => {
 
           <motion.button
             type="submit"
-            className="w-full py-3 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-lg hover:from-blue-600 hover:to-blue-700 transition-all duration-300 transform active:scale-95 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+            className="w-full py-3 bg-gradient-to-r from-orange-500 to-orange-600 text-white rounded-lg hover:from-orange-600 hover:to-orange-700 transition-all duration-300 transform active:scale-95 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-opacity-50"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.4 }}
@@ -129,7 +129,7 @@ const Login = () => {
           {message && (
             <motion.p
               className={`mt-4 text-center ${
-                message.includes('successful') ? 'text-green-500' : 'text-red-500'
+                message.includes('successful') ? 'text-black' : 'text-red-500'
               }`}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
