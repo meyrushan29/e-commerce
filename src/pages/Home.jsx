@@ -96,7 +96,7 @@ const Home = () => {
             onClick={logout}
             className="flex items-center justify-center bg-black text-white px-4 py-2 rounded-full hover:bg-red-500 transition duration-300 text-sm sm:text-base shadow-lg focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-opacity-50"
           >
-            <FaSignOutAlt className="mr-2" size={18} /> {/* Smaller Logout Icon */}
+            <FaSignOutAlt className="mr-2" size={10} /> {/* Smaller Logout Icon */}
             Logout
           </button>
 
@@ -127,14 +127,14 @@ const Home = () => {
           placeholder="Search Products"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          className="mb-6 p-2 border border-gray-300  w-full"
+          className="mb-6 p-2 border-2 border-black  w-full"
         />
 
         <div className="flex flex-wrap mb-4 gap-4">
           <select
             onChange={(e) => setCategoryFilter(e.target.value)}
             value={categoryFilter}
-            className="p-2 border border-gray-300  w-full sm:w-1/2 md:w-auto mb-2 sm:mb-0"
+            className="p-2 border-2 border-black  w-full sm:w-1/2 md:w-auto mb-2 sm:mb-0"
           >
             <option value="">All Categories</option>
             <option value="Electronics">Electronics</option>
@@ -143,32 +143,29 @@ const Home = () => {
           </select>
 
           <div className="flex items-center gap-4">
-  <label htmlFor="priceFilter" className="text-sm font-semibold">Max Price: Rs. {priceFilter}</label>
-  <input
-    id="priceFilter"
-    type="range"
-    min="0"
-    max="200"
-    step="10"
-    value={priceFilter}
-    onChange={(e) => setPriceFilter(e.target.value)}
-    className="w-full sm:w-1/2 md:w-auto"
-  />
-</div>
+             <label htmlFor="priceFilter" className="text-sm font-semibold">Max Price: Rs. {priceFilter}</label>
+              <input
+                id="priceFilter"
+                type="range"
+                min="0"
+                max="200"
+                step="10"
+                value={priceFilter}
+                onChange={(e) => setPriceFilter(e.target.value)}
+                className="w-full sm:w-1/2 md:w-auto"
+               />
+            </div>
 
         </div>
       </div>
 
       {/* Main Content */}
       <div className="p-4 sm:p-6 lg:p-8 mt-32"> {/* Added mt-32 to create space for fixed elements */}
-      <div
-  id="products"
-  className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6"
->
-  {filteredProducts.length === 0 ? (
-    <div className="col-span-full text-center text-xl font-semibold text-gray-700">
-      No items found.
-    </div>
+      <div id="products"className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+        {filteredProducts.length === 0 ? (
+         <div className="col-span-full text-center text-xl font-semibold text-gray-700">
+           No items found.
+         </div>
   ) : (
     filteredProducts.map((product) => (
       <motion.div
@@ -195,41 +192,34 @@ const Home = () => {
         </div>
         <div className="mt-4 flex justify-between items-center">
           {/* Product Price */}
-          <span className="text-xl font-semibold text-indigo-600">
+           <span className="text-xl font-semibold text-black">
             {product.price}
           </span>
           {/* Add to Cart Button */}
-          <button
+           <button
             onClick={() => addToCart(product)}
-            className="bg-orange-500 text-white py-2 px-4 rounded-md hover:bg-orange-200 transition duration-300"
-          >
-            Add to Cart
-          </button>
-        </div>
-      </motion.div>
-    ))
-  )}
-</div>
-
-
+            className="bg-orange-500 text-white py-2 px-4 rounded-md hover:bg-orange-200 transition duration-300">
+                         Add to Cart
+           </button>
+          </div>
+      </motion.div>  )) )}
       </div>
 
-
-
-      {/* Cart Modal */}
+   </div>
      
+      {/* Cart Modal */}
       {showCartModal && (
-  <div className="fixed inset-0 bg-opacity-85 flex justify-center items-center z-50 bg-blue-400 ">
+  <div className="fixed inset-0 bg-opacity-85 flex justify-center items-center z-50 bg-orange-300 ">
     <div className="bg-white p-12 w-124 shadow-lg rounded-lg max-h-[120vh] overflow-y-auto">
       <h2 className="text-xl font-semibold mb-4">Your Cart</h2>
       {cart.length === 0 ? (
         <>
           <p>Your cart is empty.</p>
           {/* Close Button when cart is empty */}
-          <div className="flex justify-end mt-4">
+          <div className="flex justify-end mt-6 mx-40">
             <button
               onClick={() => setShowCartModal(false)}
-              className="bg-indigo-600 text-white px-4 py-2 rounded-md"
+              className="bg-orange-400 text-white px-4 py-2 rounded-md"
             >
               Close
             </button>
@@ -286,7 +276,7 @@ const Home = () => {
             <div className="flex gap-4">
               <button
                 onClick={() => setShowCartModal(false)}
-                className="bg-indigo-600 text-white px-4 py-2 rounded-md"
+                className="bg-orange-400 text-white px-4 py-2 rounded-md"
               >
                 Close
               </button>
@@ -305,8 +295,16 @@ const Home = () => {
 )}
 
 
-
-
+<footer className="bg-gray-800 text-white py-6">
+  <div className="container mx-auto text-center">
+    <p>&copy; 2024 Your Company. All rights reserved.</p>
+    <div className="flex justify-center space-x-6 mt-4">
+      <a href="#" className="hover:text-gray-400">Privacy Policy</a>
+      <a href="#" className="hover:text-gray-400">Terms of Service</a>
+      <a href="#" className="hover:text-gray-400">Contact Us</a>
+    </div>
+  </div>
+</footer>
     </div>
   );
 };
