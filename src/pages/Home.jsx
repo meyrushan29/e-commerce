@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 import { FaShoppingCart } from 'react-icons/fa';
 import { FaBars } from 'react-icons/fa';
 import { FaSignOutAlt } from 'react-icons/fa';
-
+import { FaSearch } from "react-icons/fa";
 
 
 const products = [
@@ -130,20 +130,28 @@ const Home = () => {
       </nav>
 
 {/* Fixed Search Bar and Filters */}
-<div className="bg-orange-300 p-2 sm:p-8 lg:p-8 shadow-md fixed top-14 left-0 right-0 z-40 border-2 border-black">
-  <input
-    type="text"
-    placeholder="Search Products"
-    value={searchQuery}
-    onChange={(e) => setSearchQuery(e.target.value)}
-    className="mb-6 p-2 border-2 border-black w-full"
-  />
+<div className="bg-white p-2 sm:p-8 lg:p-8 shadow-md fixed top-14 left-0 right-0 z-40 border-4 border-orange-400">
+  {/* Search Input */}
+  <div className="relative mb-6 w-full">
+    <input
+      type="text"
+      placeholder="Search Products"
+      value={searchQuery}
+      onChange={(e) => setSearchQuery(e.target.value)}
+      className="p-2 pl-10 pr-10 border-2 border-orange-400 w-full rounded-md"
+    />
+    <span className="absolute inset-y-0 right-3 flex items-center text-orange-400">
+      <FaSearch />
+    </span>
+  </div>
 
-  <div className="flex flex-wrap mb-4 gap-4 mr-2">
+  {/* Filters */}
+  <div className="flex flex-wrap mb-4 gap-4">
+    {/* Category Filter */}
     <select
       onChange={(e) => setCategoryFilter(e.target.value)}
       value={categoryFilter}
-      className="p-2 border-2 border-black w-full sm:w-1/2 md:w-auto mb-2 sm:mb-0"
+      className="p-2 border-2 border-orange-400 w-full sm:w-1/2 md:w-auto rounded-md"
     >
       <option value="">All Categories</option>
       <option value="Electronics">Electronics</option>
@@ -151,36 +159,41 @@ const Home = () => {
       <option value="Groceries">Groceries</option>
     </select>
 
-    <div className="flex items-end gap-4">
-      <label htmlFor="priceFilter" className="text-sm font-semibold">
-        Max Price: Rs. {priceFilter}
+    {/* Price Filter */}
+    <div className="flex items-center gap-2 w-full sm:w-auto">
+      <label htmlFor="priceRange" className="text-orange-600 font-medium">
+        Price:
       </label>
-      <input
-        id="priceFilter"
-        type="range"
-        min="0"
-        max="200"
-        step="10"
+      <select
+        id="priceRange"
+        onChange={(e) => setPriceFilter(e.target.value)}
         value={priceFilter}
-        onChange={(e) => setPriceFilter(Number(e.target.value))}
-        className="w-full sm:w-1/2 md:w-auto"
-      />
-    </div>
-
-    {/* Success Message */}
-    {successMessage && (
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: 20 }}
-        transition={{ duration: 0.5 }}
-        className="fixed top-20 left-1/2 transform -translate-x-1/2 bg-orange-600 text-white px-6 py-2 rounded-md shadow-lg z-50"
+        className="p-2 border-2 border-orange-400 rounded-md w-full sm:w-auto"
       >
-        {successMessage}
-      </motion.div>
-    )}
+        <option value="">All Prices</option>
+        <option value="0-50">Rs.0 - Rs.50</option>
+        <option value="50-100">Rs.50 - Rs.100</option>
+        <option value="100-500">Rs.100 - Rs.500</option>
+        <option value="500-1000">Rs.500 - Rs.1000</option>
+        <option value="1000+">Rs.1000</option>
+      </select>
+    </div>
   </div>
+
+  {/* Success Message */}
+  {successMessage && (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: 20 }}
+      transition={{ duration: 0.5 }}
+      className="fixed top-20 left-3/4 transform -translate-x-1/2 bg-orange-600 text-white px-6 py-2 rounded-md shadow-lg z-50"
+    >
+      {successMessage}
+    </motion.div>
+  )}
 </div>
+
 
       {/* Main Content */}
       <div className="p-4 sm:p-6 lg:p-8 mt-32"> {/* Added mt-32 to create space for fixed elements */}
