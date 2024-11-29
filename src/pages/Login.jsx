@@ -93,7 +93,7 @@ const Login = () => {
                 setFormErrors((prev) => ({ ...prev, password: '' }));
               }}
               className={`w-full pl-10 pr-10 py-3 border ${
-                formErrors.password ? 'border-red-500' : 'border-gray-300'
+                formErrors.password ? 'border-red-500 font-bold' : 'border-gray-300'
               } rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500`}
             />
             <button
@@ -104,7 +104,7 @@ const Login = () => {
               {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
             </button>
             {formErrors.password && (
-              <p className="text-red-500 text-sm mt-1">{formErrors.password}</p>
+              <p className="text-red-500 text-sm font-bold mt-1">{formErrors.password}</p>
             )}
           </div>
 

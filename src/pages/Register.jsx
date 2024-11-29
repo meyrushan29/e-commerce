@@ -18,19 +18,28 @@ const Register = () => {
 
   const validateForm = () => {
     const errors = {};
-    if (!name.trim()) errors.name = 'Name is required';
+    
+    if (!name.trim()) {
+        errors.name = 'Name is required';
+    } else if (!/^[A-Za-z\s]+$/.test(name.trim())) {
+        errors.name = 'Name must only contain letters and spaces';
+    }
+
     if (!email.trim()) {
-      errors.email = 'Email is required';
+        errors.email = 'Email is required';
     } else if (!/\S+@\S+\.\S+/.test(email)) {
-      errors.email = 'Invalid email format';
+        errors.email = 'Invalid email format';
     }
+
     if (!password) {
-      errors.password = 'Password is required';
+        errors.password = 'Password is required';
     } else if (password.length < 8) {
-      errors.password = 'Password must be at least 8 characters';
+        errors.password = 'Password must be at least 8 characters';
     }
+
     return errors;
-  };
+};
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -67,7 +76,7 @@ const Register = () => {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
       >
-        <h2 className="text-3xl font-bold mb-6 text-center text-gray-800">Create Account</h2>
+        <h2 className="text-3xl font-bold mb-6 text-center text-gray-800">Sign Up</h2>
         <motion.form
           onSubmit={handleSubmit}
           className="space-y-4"
@@ -92,7 +101,7 @@ const Register = () => {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.4, delay: 0.4 }}
             />
-            {formErrors.name && <p className="text-red-500 text-sm mt-1">{formErrors.name}</p>}
+            {formErrors.name && <p className="text-red-500 text-sm font-bold mt-1">{formErrors.name}</p>}
           </div>
 
           <div className="relative">
@@ -112,7 +121,7 @@ const Register = () => {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.4, delay: 0.5 }}
             />
-            {formErrors.email && <p className="text-red-500 text-sm mt-1">{formErrors.email}</p>}
+            {formErrors.email && <p className="text-red-500 text-sm font-bold mt-1">{formErrors.email}</p>}
           </div>
 
           <div className="relative">
@@ -139,7 +148,7 @@ const Register = () => {
             >
               {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
             </button>
-            {formErrors.password && <p className="text-red-500 text-sm mt-1">{formErrors.password}</p>}
+            {formErrors.password && <p className="text-red-500 text-sm font-bold mt-1">{formErrors.password}</p>}
           </div>
 
           <motion.button

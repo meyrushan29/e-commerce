@@ -129,56 +129,58 @@ const Home = () => {
         </div>
       </nav>
 
-      {/* Fixed Search Bar and Filters */}
-      <div className="bg-orange-300 p-2 sm:p-8 lg:p-8 shadow-md fixed top-14 left-0 right-0 z-40 border-2 border-black">
-        <input
-          type="text"
-          placeholder="Search Products"
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-          className="mb-6 p-2 border-2 border-black  w-full"
-        />
+{/* Fixed Search Bar and Filters */}
+<div className="bg-orange-300 p-2 sm:p-8 lg:p-8 shadow-md fixed top-14 left-0 right-0 z-40 border-2 border-black">
+  <input
+    type="text"
+    placeholder="Search Products"
+    value={searchQuery}
+    onChange={(e) => setSearchQuery(e.target.value)}
+    className="mb-6 p-2 border-2 border-black w-full"
+  />
 
-        <div className="flex flex-wrap mb-4 gap-4">
-          <select
-            onChange={(e) => setCategoryFilter(e.target.value)}
-            value={categoryFilter}
-            className="p-2 border-2 border-black  w-full sm:w-1/2 md:w-auto mb-2 sm:mb-0"
-          >
-            <option value="">All Categories</option>
-            <option value="Electronics">Electronics</option>
-            <option value="Clothing">Clothing</option>
-            <option value="Groceries">Groceries</option>
-          </select>
+  <div className="flex flex-wrap mb-4 gap-4 mr-2">
+    <select
+      onChange={(e) => setCategoryFilter(e.target.value)}
+      value={categoryFilter}
+      className="p-2 border-2 border-black w-full sm:w-1/2 md:w-auto mb-2 sm:mb-0"
+    >
+      <option value="">All Categories</option>
+      <option value="Electronics">Electronics</option>
+      <option value="Clothing">Clothing</option>
+      <option value="Groceries">Groceries</option>
+    </select>
 
-          <div className="flex items-center gap-4">
-             <label htmlFor="priceFilter" className="text-sm font-semibold">Max Price: Rs. {priceFilter}</label>
-              <input
-                id="priceFilter"
-                type="range"
-                min="0"
-                max="200"
-                step="10"
-                value={priceFilter}
-                onChange={(e) => setPriceFilter(e.target.value)}
-                className="w-full sm:w-1/2 md:w-auto"
-               />
-            </div>
-            {/* Success Message */}
-            {successMessage && (
-              <motion.div
-                 initial={{ opacity: 0, y: 20 }} // Start offscreen and invisible
-                 animate={{ opacity: 1, y: 0 }}  // Fade in and slide up
-                 exit={{ opacity: 0, y: 20 }}    // Fade out and slide down when removed
-                 transition={{ duration: 0.5 }}   // Animation duration
-                 className=" transform -translate-x-1/2 bg-orange-600 text-white px-6 py-2 rounded-md shadow-lg z-50">
-             {successMessage}
-              </motion.div>
-)}
+    <div className="flex items-end gap-4">
+      <label htmlFor="priceFilter" className="text-sm font-semibold">
+        Max Price: Rs. {priceFilter}
+      </label>
+      <input
+        id="priceFilter"
+        type="range"
+        min="0"
+        max="200"
+        step="10"
+        value={priceFilter}
+        onChange={(e) => setPriceFilter(Number(e.target.value))}
+        className="w-full sm:w-1/2 md:w-auto"
+      />
+    </div>
 
-        </div>
-        
-      </div>
+    {/* Success Message */}
+    {successMessage && (
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: 20 }}
+        transition={{ duration: 0.5 }}
+        className="fixed top-20 left-1/2 transform -translate-x-1/2 bg-orange-600 text-white px-6 py-2 rounded-md shadow-lg z-50"
+      >
+        {successMessage}
+      </motion.div>
+    )}
+  </div>
+</div>
 
       {/* Main Content */}
       <div className="p-4 sm:p-6 lg:p-8 mt-32"> {/* Added mt-32 to create space for fixed elements */}
@@ -225,8 +227,8 @@ const Home = () => {
           </div>
       </motion.div>  )) )}
       </div>
-
    </div>
+   
      
       {/* Cart Modal */}
       {showCartModal && (
