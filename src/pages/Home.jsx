@@ -9,17 +9,18 @@ import { FaSignOutAlt } from 'react-icons/fa';
 
 
 const products = [
-  { id: 1, name: "Product 1", price: "Rs.20", category: "Electronics", description: "This is a description of Product 1.", image: "https://picsum.photos/id/10/300/300" },
-  { id: 2, name: "Product 2", price: "Rs.30", category: "Clothing", description: "This is a description of Product 2.", image: "https://picsum.photos/id/20/300/300" },
-  { id: 3, name: "Product 3", price: "Rs.40", category: "Groceries", description: "This is a description of Product 3.", image: "https://picsum.photos/id/30/300/300" },
-  { id: 4, name: "Product 4", price: "Rs.50", category: "Electronics", description: "This is a description of Product 4.", image: "https://picsum.photos/id/40/300/300" },
-  { id: 5, name: "Product 5", price: "Rs.60", category: "Clothing", description: "This is a description of Product 5.", image: "https://picsum.photos/id/50/300/300" },
-  { id: 6, name: "Product 6", price: "Rs.70", category: "Groceries", description: "This is a description of Product 6.", image: "https://picsum.photos/id/60/300/300" },
-  { id: 7, name: "Product 7", price: "Rs.80", category: "Electronics", description: "This is a description of Product 7.", image: "https://picsum.photos/id/70/300/300" },
-  { id: 8, name: "Product 8", price: "Rs.90", category: "Clothing", description: "This is a description of Product 8.", image: "https://picsum.photos/id/80/300/300" },
-  { id: 9, name: "Product 9", price: "Rs.100", category: "Groceries", description: "This is a description of Product 9.", image: "https://picsum.photos/id/90/300/300" },
-  { id: 10, name: "Product 10", price: "Rs.110", category: "Electronics", description: "This is a description of Product 10.", image: "https://picsum.photos/id/100/300/300" },
+  { id: 1, name: "Wireless Bluetooth Speaker", price: "Rs.20", category: "Electronics", description: "Compact and portable speaker with superior sound quality.", image: "https://picsum.photos/id/10/300/300" },
+  { id: 2, name: "Men's Cotton T-Shirt", price: "Rs.30", category: "Clothing", description: "Comfortable and stylish cotton t-shirt available in various colors.", image: "https://picsum.photos/id/20/300/300" },
+  { id: 3, name: "Organic Almonds (500g)", price: "Rs.40", category: "Groceries", description: "Premium quality organic almonds, perfect for snacking.", image: "https://picsum.photos/id/30/300/300" },
+  { id: 4, name: "Noise-Cancelling", price: "Rs.50", category: "Electronics", description: "Over-ear headphones with active noise-cancellation.", image: "https://picsum.photos/id/40/300/300" },
+  { id: 5, name: "Women's Summer Dress", price: "Rs.60", category: "Clothing", description: "Elegant and lightweight summer dress for casual outings.", image: "https://picsum.photos/id/50/300/300" },
+  { id: 6, name: "Organic Brown Rice (1kg)", price: "Rs.70", category: "Groceries", description: "Healthy and nutritious organic brown rice.", image: "https://picsum.photos/id/60/300/300" },
+  { id: 7, name: "Smartphone (64GB)", price: "Rs.80", category: "Electronics", description: "Feature-packed smartphone with a stunning display and great battery life.", image: "https://picsum.photos/id/70/300/300" },
+  { id: 8, name: "Unisex Denim Jacket", price: "Rs.90", category: "Clothing", description: "Stylish and durable denim jacket for all seasons.", image: "https://picsum.photos/id/80/300/300" },
+  { id: 9, name: "Fresh Apples (1kg)", price: "Rs.100", category: "Groceries", description: "Crisp and juicy apples, directly sourced from farms.", image: "https://picsum.photos/id/90/300/300" },
+  { id: 10, name: "Smart TV (43-inch)", price: "Rs.110", category: "Electronics", description: "Ultra HD Smart TV with vibrant display and built-in streaming apps.", image: "https://picsum.photos/id/100/300/300" },
 ];
+
 
 const Home = () => {
   const { user, logout } = useAuth();
@@ -79,21 +80,21 @@ const Home = () => {
   });
 
   return (
-    <div className="min-h-screen bg-blue-300 pt-28"> {/* Added pt-28 to ensure space for both the navbar and search bar */}
+    <div className="min-h-screen bg-white pt-28"> {/* Added pt-28 to ensure space for both the navbar and search bar */}
       {/* Navigation Bar */}
-      <nav className="bg-indigo-600 p-4 shadow-md flex justify-between items-center flex-wrap fixed top-0 left-0 right-0 z-50">
+      <nav className="bg-orange-600 p-4 shadow-md flex justify-between items-center flex-wrap fixed top-0 left-0 right-0 z-50">
         <div className="flex items-center space-x-4">
-          <a href="/" className="text-white text-2xl font-semibold">Shopify</a>
+          <a href="/" className="text-white text-2xl font-semibold">E-Store</a>
         </div>
 
         <div className="flex space-x-4 items-center mx-4">
           <div className="text-lg font-semibold text-white hidden sm:block">
-            {user.name}
+            User : {user.name}
           </div>
 
           <button
             onClick={logout}
-            className="flex items-center justify-center bg-red-600 text-white px-4 py-2 rounded-full hover:bg-red-500 transition duration-300 text-sm sm:text-base shadow-lg focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-opacity-50"
+            className="flex items-center justify-center bg-black text-white px-4 py-2 rounded-full hover:bg-red-500 transition duration-300 text-sm sm:text-base shadow-lg focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-opacity-50"
           >
             <FaSignOutAlt className="mr-2" size={18} /> {/* Smaller Logout Icon */}
             Logout
@@ -120,7 +121,7 @@ const Home = () => {
       </nav>
 
       {/* Fixed Search Bar and Filters */}
-      <div className="bg-white p-2 sm:p-8 lg:p-8 shadow-md fixed top-14 left-0 right-0 z-40">
+      <div className="bg-orange-300 p-2 sm:p-8 lg:p-8 shadow-md fixed top-14 left-0 right-0 z-40">
         <input
           type="text"
           placeholder="Search Products"
@@ -160,7 +161,10 @@ const Home = () => {
 
       {/* Main Content */}
       <div className="p-4 sm:p-6 lg:p-8 mt-32"> {/* Added mt-32 to create space for fixed elements */}
-      <div id="products" className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-10">
+      <div
+  id="products"
+  className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6"
+>
   {filteredProducts.length === 0 ? (
     <div className="col-span-full text-center text-xl font-semibold text-gray-700">
       No items found.
@@ -172,16 +176,32 @@ const Home = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
-        className="bg-white p-4  shadow-lg"
+        className="bg-white rounded-lg shadow-md p-4 flex flex-col justify-between min-h-[400px] h-auto 
+          transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl"
       >
-        <img src={product.image} alt={product.name} className="w-full h-56 object-cover" />
-        <h3 className="text-xl font-semibold mt-4">{product.name}</h3>
-        <p className="text-gray-500 mt-2">{product.description}</p>
-        <div className="flex justify-between items-center mt-4">
-          <span className="text-xl font-bold">{product.price}</span>
+        <div className="flex flex-col items-center">
+          {/* Product Image */}
+          <img
+            src={product.image}
+            alt={product.name}
+            className="w-full h-48 object-cover rounded-md"
+          />
+          {/* Product Name */}
+          <h3 className="text-lg font-bold mt-4 text-center">{product.name}</h3>
+          {/* Product Description */}
+          <p className="text-sm text-gray-500 mt-2 text-center">
+            {product.description}
+          </p>
+        </div>
+        <div className="mt-4 flex justify-between items-center">
+          {/* Product Price */}
+          <span className="text-xl font-semibold text-indigo-600">
+            {product.price}
+          </span>
+          {/* Add to Cart Button */}
           <button
             onClick={() => addToCart(product)}
-            className="bg-blue-500 text-white py-2 px-4  hover:bg-blue-400 transition duration-300"
+            className="bg-orange-500 text-white py-2 px-4 rounded-md hover:bg-orange-200 transition duration-300"
           >
             Add to Cart
           </button>
@@ -190,6 +210,8 @@ const Home = () => {
     ))
   )}
 </div>
+
+
       </div>
 
 
@@ -197,89 +219,92 @@ const Home = () => {
       {/* Cart Modal */}
      
       {showCartModal && (
-  <div className="fixed inset-0 bg-opacity-85 flex justify-center items-center z-50 bg-blue-400">
-  <div className="bg-white p-20  w-120 shadow-lg">
-    <h2 className="text-xl font-semibold mb-4">Your Cart</h2>
-    {cart.length === 0 ? (
-      <>
-        <p>Your cart is empty.</p>
-        {/* Close Button when cart is empty */}
-        <div className="flex justify-end mt-4">
-          <button
-            onClick={() => setShowCartModal(false)}
-            className="bg-indigo-600 text-white px-4 py-2 "
-          >
-            Close
-          </button>
-        </div>
-      </>
-    ) : (
-      <>
-        <ul>
-          {cart.map((item) => (
-            <li key={item.id} className="flex justify-between items-center mb-4 mx-6">
-              <div className="flex items-center">
-                {/* Product Image */}
-                <img
-                  src={item.image}
-                  alt={item.name}
-                  className="w-28 object-cover mr-4 mb-6" // Adjusted size of the image
-                />
-                <div className="inline-flex gap-10">
-                  <h3 className="flex font-semibold">{item.name}</h3>
-                  <p className="flex text-gray-500 text-sm gap-2">
-                    Rs. {item.price} x {item.quantity}
-                  </p>
+  <div className="fixed inset-0 bg-opacity-85 flex justify-center items-center z-50 bg-blue-400 ">
+    <div className="bg-white p-12 w-124 shadow-lg rounded-lg max-h-[120vh] overflow-y-auto">
+      <h2 className="text-xl font-semibold mb-4">Your Cart</h2>
+      {cart.length === 0 ? (
+        <>
+          <p>Your cart is empty.</p>
+          {/* Close Button when cart is empty */}
+          <div className="flex justify-end mt-4">
+            <button
+              onClick={() => setShowCartModal(false)}
+              className="bg-indigo-600 text-white px-4 py-2 rounded-md"
+            >
+              Close
+            </button>
+          </div>
+        </>
+      ) : (
+        <>
+          <ul className="space-y-4 overflow-y-auto max-h-[60vh] pr-2">
+            {cart.map((item) => (
+              <li key={item.id} className="flex justify-between items-center mb-4">
+                <div className="flex items-center">
+                  {/* Product Image */}
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    className="w-28 object-cover mr-20"
+                  />
+                  <div className="flex flex-col gap-1 mr-20">
+                    <h3 className="font-semibold">{item.name}</h3>
+                    <p className="text-gray-500 text-sm">
+                      Rs. {item.price} x {item.quantity}
+                    </p>
+                  </div>
                 </div>
-              </div>
-              <div className="inline-flex gap-2">
-                {/* Decrease Quantity Button */}
-                <button
-                  onClick={() => updateQuantity(item.id, -1)}
-                  className="border border-gray-400 text-gray-700 px-3 py-1 mr-2 mx-4"
-                >
-                  -
-                </button>
-                <span className="mx-2">{item.quantity}</span>
-                {/* Increase Quantity Button */}
-                <button
-                  onClick={() => updateQuantity(item.id, 1)}
-                  className="border border-gray-400 text-gray-700 px-3 py-1 ml-2 mx-4"
-                >
-                  +
-                </button>
-              </div>
-              {/* Remove from Cart Button */}
+                <div className="flex items-center gap-2">
+                  {/* Decrease Quantity Button */}
+                  <button
+                    onClick={() => updateQuantity(item.id, -1)}
+                    className="border border-gray-400 text-gray-700 px-3 py-1 rounded-md"
+                  >
+                    -
+                  </button>
+                  <span className="mx-2">{item.quantity}</span>
+                  {/* Increase Quantity Button */}
+                  <button
+                    onClick={() => updateQuantity(item.id, 1)}
+                    className="border border-gray-400 text-gray-700 px-3 py-1 rounded-md"
+                  >
+                    +
+                  </button>
+                  {/* Remove from Cart Button */}
+                  <button
+                    onClick={() => removeFromCart(item.id)}
+                    className="bg-red-500 text-white p-2 ml-6 rounded-md"
+                  >
+                    Remove
+                  </button>
+                </div>
+              </li>
+            ))}
+          </ul>
+          <div className="flex justify-between items-center mt-4">
+            <span className="font-semibold">Total: Rs. {totalCost}</span>
+            <div className="flex gap-4">
               <button
-                onClick={() => removeFromCart(item.id)}
-                className="bg-red-500 text-white p-2 ml-2"
+                onClick={() => setShowCartModal(false)}
+                className="bg-indigo-600 text-white px-4 py-2 rounded-md"
               >
-                Remove
+                Close
               </button>
-            </li>
-          ))}
-        </ul>
-        <div className="flex justify-between items-center mt-4 mx-3">
-          <span className="font-semibold">Total: Rs. {totalCost}</span>
-          <button
-            onClick={() => setShowCartModal(false)}
-            className="bg-indigo-600 text-white px-4 py-2"
-          >
-            Close
-          </button>
-          <button
-            onClick={() => setShowCartModal(false)}
-            className="bg-indigo-600 text-white px-4 py-2 "
-          >
-            Check Out
-          </button>
-        </div>
-      </>
-    )}
+              <button
+                onClick={() => setShowCartModal(false)}
+                className="bg-green-600 text-white px-4 py-2 rounded-md"
+              >
+                Check Out
+              </button>
+            </div>
+          </div>
+        </>
+      )}
+    </div>
   </div>
-</div>
-
 )}
+
+
 
 
     </div>
