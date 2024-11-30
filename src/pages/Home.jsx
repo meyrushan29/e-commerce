@@ -92,10 +92,10 @@ const Home = () => {
     <div className="min-h-screen bg-white pt-28"> {/* Added pt-28 to ensure space for both the navbar and search bar */}
       <main className="flex-grow">
       {/* Navigation Bar */}
-      <nav className="bg-orange-600 p-4 shadow-md flex justify-between items-center flex-wrap fixed top-0 left-0 right-0 z-50 ">
-        <div className="flex items-center space-x-4">
-          <a href="/" className="text-white text-2xl font-semibold">E-Store</a>
-        </div>
+        <nav className="bg-orange-600 p-4 shadow-md flex justify-between items-center flex-wrap fixed top-0 left-0 right-0 z-50 ">
+           <div className="flex items-center space-x-4">
+             <a href="/" className="text-white text-2xl font-semibold">E-Store</a>
+           </div>
 
         <div className="flex space-x-4 items-center mx-4">
           <div className="text-lg font-semibold text-white hidden sm:block">
@@ -104,16 +104,16 @@ const Home = () => {
 
           <button
             onClick={logout}
-            className="flex items-center justify-center bg-white text-black px-4 py-2 rounded-full hover:bg-orange-500 transition duration-300 text-sm sm:text-base shadow-lg focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-opacity-50"
-          >
+            className="flex items-center justify-center bg-white text-black px-4 py-2 rounded-full
+             hover:bg-orange-500 transition duration-300 text-sm sm:text-base shadow-lg focus:outline-none focus:ring-2
+             focus:ring-red-600 focus:ring-opacity-50">
             <FaSignOutAlt className="mr-2" size={10} /> {/* Smaller Logout Icon */}
             Logout
           </button>
 
           <button
             onClick={() => setShowCartModal(true)}
-            className="relative p-2 text-white"
-          >
+            className="relative p-2 text-white">
             <FaShoppingCart size={26} /> {/* Adjusted Cart Icon size */}
             {cart.length > 0 && (
               <span className="absolute top-0 right-0 bg-red-600 rounded-xl text-white text-xs  px-2 py-1">
@@ -130,7 +130,7 @@ const Home = () => {
         </div>
       </nav>
 
-<div className="bg-white p-4 sm:p-8 lg:p-8 shadow-md fixed top-16 left-0 right-0 z-40 border-4 border-orange-400">
+      <div className="bg-white p-4 sm:p-8 lg:p-8 shadow-md fixed top-16 left-0 right-0 z-40 border-4 border-orange-400">
       {/* Search Input */}
       <div className="relative mb-6 w-full">
         <input
@@ -193,7 +193,7 @@ const Home = () => {
 
 
       {/* Main Content */}
-      <div className="p-4 sm:p-6 lg:p-8 mt-40"> {/* Added mt-32 to create space for fixed elements */}
+<div className="p-4 sm:p-6 lg:p-8 mt-40"> {/* Added mt-32 to create space for fixed elements */}
       <div id="products"className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 xl:grid-cols-6 gap-6">
         {filteredProducts.length === 0 ? (
          <div className="col-span-full text-center text-xl font-semibold text-gray-700">
@@ -214,16 +214,16 @@ const Home = () => {
           <img
             src={product.image}
             alt={product.name}
-            className="w-full h-48 object-cover rounded-md"
+            className="w-full h-46 object-cover rounded-md"
           />
           {/* Product Name */}
-          <h3 className="text-lg font-bold mt-4 text-center">{product.name}</h3>
+          <h3 className="text-lg font-bold mt-2 text-center">{product.name}</h3>
           {/* Product Description */}
-          <p className="text-sm text-gray-500 mt-2 text-center">
+          <p className="text-sm text-gray-500 mt-1 text-center">
             {product.description}
           </p>
         </div>
-        <div className="mt-4 flex justify-between items-center">
+        <div className="mt-2 flex justify-between items-center">
           {/* Product Price */}
            <span className="text-xl font-semibold text-black">
             {product.price}
@@ -239,7 +239,7 @@ const Home = () => {
       </div>
    </div>
    
-     
+      {/*Cart Model */}
    {showCartModal && (
         <div className="fixed inset-0 bg-opacity-85 flex justify-center items-center z-50 bg-orange-300 p-4 md:p-0">
           <div className="bg-white p-6 md:p-12 w-full md:w-124 shadow-lg rounded-lg max-h-[120vh] overflow-y-auto md:max-w-2xl">
