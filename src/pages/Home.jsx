@@ -90,6 +90,7 @@ const Home = () => {
 
   return (
     <div className="min-h-screen bg-white pt-28"> {/* Added pt-28 to ensure space for both the navbar and search bar */}
+      <main className="flex-grow">
       {/* Navigation Bar */}
       <nav className="bg-orange-600 p-4 shadow-md flex justify-between items-center flex-wrap fixed top-0 left-0 right-0 z-50 ">
         <div className="flex items-center space-x-4">
@@ -129,74 +130,70 @@ const Home = () => {
         </div>
       </nav>
 
-{/* Fixed Search Bar and Filters */}
-<div className="bg-white p-2 sm:p-8 lg:p-8 shadow-md fixed top-14 left-0 right-0 z-40 border-4 border-orange-400">
-  {/* Search Input */}
-  <div className="relative mb-6 w-full">
-    <input
-      type="text"
-      placeholder="Search Products"
-      value={searchQuery}
-      onChange={(e) => setSearchQuery(e.target.value)}
-      className="p-2 pl-10 pr-10 border-2 border-orange-400 w-full rounded-md"
-    />
-    <span className="absolute inset-y-0 right-3 flex items-center text-orange-400">
-      <FaSearch />
-    </span>
-  </div>
+<div className="bg-white p-4 sm:p-8 lg:p-8 shadow-md fixed top-16 left-0 right-0 z-40 border-4 border-orange-400">
+      {/* Search Input */}
+      <div className="relative mb-6 w-full">
+        <input
+          type="text"
+          placeholder="Search Products"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          className="p-2 pl-10 pr-10 border-2 border-orange-400 w-full rounded-md"
+        />
+        <span className="absolute inset-y-0 right-3 flex items-center text-orange-400">
+          <FaSearch />
+        </span>
+      </div>
 
-  {/* Filters */}
-  <div className="flex flex-wrap mb-4 gap-4">
-    {/* Category Filter */}
-    <select
-      onChange={(e) => setCategoryFilter(e.target.value)}
-      value={categoryFilter}
-      className="p-2 border-2 border-orange-400 w-full sm:w-1/2 md:w-auto rounded-md"
-    >
-      <option value="">All Categories</option>
-      <option value="Electronics">Electronics</option>
-      <option value="Clothing">Clothing</option>
-      <option value="Groceries">Groceries</option>
-    </select>
+      {/* Filters */}
+      <div className="flex flex-col sm:flex-row mb-4 gap-4">
+        {/* Category Filter */}
+        <select
+          onChange={(e) => setCategoryFilter(e.target.value)}
+          value={categoryFilter}
+          className="p-2 border-2 border-orange-400 w-full sm:w-1/2 md:w-auto rounded-md"
+        >
+          <option value="">All Categories</option>
+          <option value="Electronics">Electronics</option>
+          <option value="Clothing">Clothing</option>
+          <option value="Groceries">Groceries</option>
+        </select>
 
-    {/* Price Filter */}
-    <div className="flex items-center gap-2 w-full sm:w-auto">
-      <label htmlFor="priceRange" className="text-orange-600 font-medium">
-        Price:
-      </label>
-      <select
-        id="priceRange"
-        onChange={(e) => setPriceFilter(e.target.value)}
-        value={priceFilter}
-        className="p-2 border-2 border-orange-400 rounded-md w-full sm:w-auto"
-      >
-        <option value="">All Prices</option>
-        <option value="0-50">Rs.0 - Rs.50</option>
-        <option value="50-100">Rs.50 - Rs.100</option>
-        <option value="100-500">Rs.100 - Rs.500</option>
-        <option value="500-1000">Rs.500 - Rs.1000</option>
-        <option value="1000+">Rs.1000</option>
-      </select>
+        {/* Price Filter */}
+        <div className="flex items-center gap-2 w-full sm:w-auto">
+          <select
+            id="priceRange"
+            onChange={(e) => setPriceFilter(e.target.value)}
+            value={priceFilter}
+            className="p-2 border-2 border-orange-400 rounded-md w-full sm:w-auto"
+          >
+            <option value="">All Prices</option>
+            <option value="0-50">Rs.0 - Rs.50</option>
+            <option value="50-100">Rs.50 - Rs.100</option>
+            <option value="100-500">Rs.100 - Rs.500</option>
+            <option value="500-1000">Rs.500 - Rs.1000</option>
+            <option value="1000+">Rs.1000</option>
+          </select>
+        </div>
+      </div>
+
+      {/* Success Message */}
+      {successMessage && (
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 20 }}
+          transition={{ duration: 0.5 }}
+          className="fixed top-36 left-1/2 transform -translate-x-1/2 bg-green-300 text-white px-6 py-2 rounded-md shadow-lg z-50 sm:left-3/4 sm:transform-none"
+        >
+          {successMessage}
+        </motion.div>
+      )}
     </div>
-  </div>
-
-  {/* Success Message */}
-  {successMessage && (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: 20 }}
-      transition={{ duration: 0.5 }}
-      className="fixed top-20 left-3/4 transform -translate-x-1/2 bg-orange-600 text-white px-6 py-2 rounded-md shadow-lg z-50"
-    >
-      {successMessage}
-    </motion.div>
-  )}
-</div>
 
 
       {/* Main Content */}
-      <div className="p-4 sm:p-6 lg:p-8 mt-32"> {/* Added mt-32 to create space for fixed elements */}
+      <div className="p-4 sm:p-6 lg:p-8 mt-40"> {/* Added mt-32 to create space for fixed elements */}
       <div id="products"className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 xl:grid-cols-6 gap-6">
         {filteredProducts.length === 0 ? (
          <div className="col-span-full text-center text-xl font-semibold text-gray-700">
@@ -243,104 +240,109 @@ const Home = () => {
    </div>
    
      
-      {/* Cart Modal */}
-      {showCartModal && (
-  <div className="fixed inset-0 bg-opacity-85 flex justify-center items-center z-50 bg-orange-300 ">
-    <div className="bg-white p-12 w-124 shadow-lg rounded-lg max-h-[120vh] overflow-y-auto">
-      <h2 className="text-xl font-semibold mb-4">Your Cart</h2>
-      {cart.length === 0 ? (
-        <>
-          <p>Your cart is empty.</p>
-          {/* Close Button when cart is empty */}
-          <div className="flex justify-end mt-6 mx-40">
-            <button
-              onClick={() => setShowCartModal(false)}
-              className="bg-orange-400 text-white px-4 py-2 rounded-md"
-            >
-              Close
-            </button>
-          </div>
-        </>
-      ) : (
-        <>
-          <ul className="space-y-4 overflow-y-auto max-h-[60vh] pr-2">
-            {cart.map((item) => (
-              <li key={item.id} className="flex justify-between items-center mb-4">
-                <div className="flex items-center">
-                  {/* Product Image */}
-                  <img
-                    src={item.image}
-                    alt={item.name}
-                    className="w-28 object-cover mr-20"
-                  />
-                  <div className="flex flex-col gap-1 mr-20">
-                    <h3 className="font-semibold">{item.name}</h3>
-                    <p className="text-gray-500 text-sm">
-                      Rs. {item.price} x {item.quantity}
-                    </p>
+   {showCartModal && (
+        <div className="fixed inset-0 bg-opacity-85 flex justify-center items-center z-50 bg-orange-300 p-4 md:p-0">
+          <div className="bg-white p-6 md:p-12 w-full md:w-124 shadow-lg rounded-lg max-h-[120vh] overflow-y-auto md:max-w-2xl">
+            <h2 className="text-xl font-semibold mb-4">Your Cart</h2>
+            {cart.length === 0 ? (
+              <>
+                <p>Your cart is empty.</p>
+                {/* Close Button when cart is empty */}
+                <div className="flex justify-end mt-6">
+                  <button
+                    onClick={() => setShowCartModal(false)}
+                    className="bg-orange-400 text-white px-4 py-2 rounded-md"
+                  >
+                    Close
+                  </button>
+                </div>
+              </>
+            ) : (
+              <>
+                <ul className="space-y-4 overflow-y-auto max-h-[60vh] pr-2">
+                  {cart.map((item) => (
+                    <li 
+                      key={item.id} 
+                      className="flex flex-col md:flex-row justify-between items-center mb-4 border-b pb-4"
+                    >
+                      <div className="flex flex-col md:flex-row items-center w-full">
+                        {/* Product Image */}
+                        <img
+                          src={item.image}
+                          alt={item.name}
+                          className="w-28 object-cover mb-4 md:mb-0 md:mr-6"
+                        />
+                        <div className="flex flex-col gap-1 text-center md:text-left w-full md:w-auto">
+                          <h3 className="font-semibold">{item.name}</h3>
+                          <p className="text-gray-500 text-sm">
+                            Rs. {item.price} x {item.quantity}
+                          </p>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-2 mt-4 md:mt-0">
+                        {/* Quantity Control and Remove Buttons */}
+                        <div className="flex items-center">
+                          {/* Decrease Quantity Button */}
+                          <button
+                            onClick={() => updateQuantity(item.id, -1)}
+                            className="border border-gray-400 text-gray-700 px-3 py-1 rounded-md"
+                          >
+                            -
+                          </button>
+                          <span className="mx-2">{item.quantity}</span>
+                          {/* Increase Quantity Button */}
+                          <button
+                            onClick={() => updateQuantity(item.id, 1)}
+                            className="border border-gray-400 text-gray-700 px-3 py-1 rounded-md"
+                          >
+                            +
+                          </button>
+                        </div>
+                        {/* Remove from Cart Button */}
+                        <button
+                          onClick={() => removeFromCart(item.id)}
+                          className="bg-red-500 text-white p-2 ml-4 rounded-md"
+                        >
+                          Remove
+                        </button>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+                <div className="flex flex-col md:flex-row justify-between items-center mt-4 space-y-4 md:space-y-0">
+                  <span className="font-semibold">Total: Rs. {totalCost}</span>
+                  <div className="flex gap-4">
+                    <button
+                      onClick={() => setShowCartModal(false)}
+                      className="bg-orange-400 text-white px-4 py-2 rounded-md"
+                    >
+                      Close
+                    </button>
+                    <button
+                      onClick={() => setShowCartModal(false)}
+                      className="bg-green-600 text-white px-4 py-2 rounded-md"
+                    >
+                      Check Out
+                    </button>
                   </div>
                 </div>
-                <div className="flex items-center gap-2">
-                  {/* Decrease Quantity Button */}
-                  <button
-                    onClick={() => updateQuantity(item.id, -1)}
-                    className="border border-gray-400 text-gray-700 px-3 py-1 rounded-md"
-                  >
-                    -
-                  </button>
-                  <span className="mx-2">{item.quantity}</span>
-                  {/* Increase Quantity Button */}
-                  <button
-                    onClick={() => updateQuantity(item.id, 1)}
-                    className="border border-gray-400 text-gray-700 px-3 py-1 rounded-md"
-                  >
-                    +
-                  </button>
-                  {/* Remove from Cart Button */}
-                  <button
-                    onClick={() => removeFromCart(item.id)}
-                    className="bg-red-500 text-white p-2 ml-6 rounded-md"
-                  >
-                    Remove
-                  </button>
-                </div>
-              </li>
-            ))}
-          </ul>
-          <div className="flex justify-between items-center mt-4">
-            <span className="font-semibold">Total: Rs. {totalCost}</span>
-            <div className="flex gap-4">
-              <button
-                onClick={() => setShowCartModal(false)}
-                className="bg-orange-400 text-white px-4 py-2 rounded-md"
-              >
-                Close
-              </button>
-              <button
-                onClick={() => setShowCartModal(false)}
-                className="bg-green-600 text-white px-4 py-2 rounded-md"
-              >
-                Check Out
-              </button>
-            </div>
+              </>
+            )}
           </div>
-        </>
-      )}
-    </div>
   </div>
 )}
+</main>
 
-
-<footer className="bg-gray-800 text-white py-6">
-  <div className="container mx-auto text-center">
-    <p>&copy; 2024 Your Company. All rights reserved.</p>
-    <div className="flex justify-center space-x-6 mt-4">
-      <a href="#" className="hover:text-gray-400">Privacy Policy</a>
-      <a href="#" className="hover:text-gray-400">Terms of Service</a>
-      <a href="#" className="hover:text-gray-400">Contact Us</a>
+<footer className="bg-gray-800 text-white py-6 mt-64">
+    <div className="container mx-auto text-center">
+      <p>&copy; 2024 Your Company. All rights reserved.</p>
+      <div className="flex justify-center space-x-6 mt-4">
+        <a href="#" className="hover:text-gray-400">Privacy Policy</a>
+        <a href="#" className="hover:text-gray-400">Terms of Service</a>
+        <a href="#" className="hover:text-gray-400">Contact Us</a>
+      </div>
     </div>
-  </div>
-</footer>
+  </footer>
     </div>
   );
 };
