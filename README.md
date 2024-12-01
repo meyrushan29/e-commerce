@@ -1,8 +1,19 @@
 # React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Step 1  : npm install
 
-Currently, two official plugins are available:
+Step 2  : npm run dev
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+First Page Login if you don't have an Account Click to Signup and Register and Login 
+
+Key Features : 
+1.Login Functionality: Secure login for registered users.
+
+2.Signup Feature: Allows new users to register quickly.
+
+3.Mobile Responsive: Fully optimized for seamless use on mobile devices.
+
+4.User Navigation: Easy-to-use interface post-login.
+
+5.Cart Management: Add products to the cart effortlessly and remove them quickly.
+
