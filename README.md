@@ -7,6 +7,7 @@ Step 2  : npm run dev
 First Page Login if you don't have an Account Click to Signup and Register and Login 
 
 Key Features : 
+
 1.Login Functionality: Secure login for registered users.
 
 2.Signup Feature: Allows new users to register quickly.
